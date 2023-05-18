@@ -92,6 +92,23 @@
   background: #fff;
 }
 
+.container.dark .project-comments li {
+  background: #353535;
+  border: 1px solid #1b1b1b;
+}
+
+.container.dark .project-comments p {
+  color: #fff !important;
+}
+
+.project-comments .comment-date p {
+  padding-top: 10px;
+}
+
+.container.dark .project-comments .comment-date p {
+  color: #ddd !important;
+}
+
 .container.dark span {
   color: #fff;
 }
