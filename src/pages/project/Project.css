@@ -12,10 +12,22 @@
   border-radius: 4px;
 }
 
+.container.dark .project-summary {
+  background-color: #353535;
+}
+
 .project-summary .due-date {
   margin: 10px 0;
   font-size: 0.9em;
   color: var(--title-color);
+}
+
+.container.dark .project-summary .due-date {
+  color: #fff;
+}
+
+.container.dark .project-summary .creator {
+  color: #fff;
 }
 
 .project-summary .details {
@@ -23,6 +35,10 @@
   color: var(--text-color);
   line-height: 1.8em;
   font-size: 0.9em;
+}
+
+.container.dark .project-summary .details {
+  color: #f4f4f4;
 }
 
 .project-summary h4 {
@@ -53,9 +69,18 @@
   font-size: 1.5em;
 }
 
+.container.dark .project-comments textarea {
+  background: #353535;
+  color: #fff;
+}
+
 /* comment list */
 .project-comments h4 {
   color: var(--heading-color);
+}
+
+.container.dark .project-comments h4 {
+  color: #fff;
 }
 
 .project-comments li {
@@ -65,6 +90,10 @@
   margin-top: 20px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
   background: #fff;
+}
+
+.container.dark span {
+  color: #fff;
 }
 
 .comment-author {

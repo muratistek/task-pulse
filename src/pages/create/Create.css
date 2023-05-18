@@ -1,3 +1,23 @@
 .create-form {
   max-width: 600px;
 }
+
+.container.dark .create-form span {
+  color: #fff;
+}
+
+.container.dark .create-form input,
+.container.dark .create-form textarea {
+  background-color: #353535;
+  color: #fff;
+}
+
+.container.dark .create-form .react-select__control,
+.react-select__menu {
+  background-color: #353535 !important;
+  color: #fff !important;
+}
+
+.container.dark .create-form .react-select__control .react-select__single-value {
+  color: #fff !important;
+}

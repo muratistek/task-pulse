@@ -60,7 +60,7 @@ export default function ProjectComments({ project }) {
             value={newComment}
           ></textarea>
         </label>
-        <button className="btn" disabled={user.email === "test@gmail.com"}>Add Comment</button>
+        <button className="btn" style={{ marginTop: "20px" }} disabled={user.email === "test@gmail.com"}>Add Comment</button>
       </form>
     </div>
   )

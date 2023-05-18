@@ -130,6 +130,8 @@ export default function Create() {
         <label>
           <span>Project category:</span>
           <Select
+            className='react-select-container'
+            classNamePrefix="react-select"
             onChange={(option) => {
               setCategory(option)
             }}
@@ -142,6 +144,8 @@ export default function Create() {
             onChange={(option) => setAssignedUsers(option)}
             options={users}
             isMulti
+            className='react-select-container'
+            classNamePrefix="react-select"
           />
 
         </label>
