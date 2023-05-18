@@ -10,16 +10,25 @@ export const authReducer = (state, action) => {
     case 'LOGOUT':
       return { ...state, user: null }
     case 'AUTH_IS_READY':
-      return { user: action.payload, authIsReady: true }
+      return { ...state, user: action.payload, authIsReady: true }
+    case 'SET_SIDEBAR_COLOR':
+      return { ...state, sideBarThemeColor: action.payload.sidebarColor }
+    case 'SET_MAIN_COLOR':
+      return { ...state, mainThemeColor: action.payload.mainColor }
     default:
       return state
   }
 }
 
 export const AuthContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(authReducer, { 
+  let sidebarColor = window.localStorage.getItem('sidebarColor')
+  let mainTheme = window.localStorage.getItem('mainTheme')
+
+  const [state, dispatch] = useReducer(authReducer, {
     user: null,
-    authIsReady: false
+    authIsReady: false,
+    sideBarThemeColor: !sidebarColor ? '#8d69f1' : sidebarColor,
+    mainThemeColor: !mainTheme || mainTheme !== 'dark' ? '#f4f4f4' : '#1b1b1b'
   })
 
   useEffect(() => {
@@ -30,10 +39,10 @@ export const AuthContextProvider = ({ children }) => {
   }, [])
 
   console.log('AuthContext state:', state)
-  
+
   return (
     <AuthContext.Provider value={{ ...state, dispatch }}>
-      { children }
+      {children}
     </AuthContext.Provider>
   )
 

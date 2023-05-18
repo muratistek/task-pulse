@@ -9,17 +9,10 @@ import AddIcon from '../assets/add_icon.svg'
 import { useState } from 'react'
 
 export default function Sidebar() {
-  const { user } = useAuthContext()
+  const { user, sideBarThemeColor, mainThemeColor, dispatch } = useAuthContext()
 
-  let sidebarColor = window.localStorage.getItem('sidebarColor')
-  let mainTheme = window.localStorage.getItem('mainTheme')
-
-  // color picker - sidebar
-  const [selectedColor, setSelectedColor] = useState(!sidebarColor ? '#8d69f1' : sidebarColor); // Initial selected color
-  const [showSidebarOptions, setShowSidebarOptions] = useState(false); // State to toggle options visibility
-
-  // color picker - dashboard
-  const [mainThemeColor, setMainThemeColor] = useState(!mainTheme || mainTheme !== 'dark' ? '#f4f4f4' : '#1b1b1b');
+  // States to toggle options visibility
+  const [showSidebarOptions, setShowSidebarOptions] = useState(false);
   const [showMainThemeOptions, setShowMainThemeOptions] = useState(false);
 
   const sidebarColorOptions = [
@@ -35,19 +28,19 @@ export default function Sidebar() {
   ]
 
   const handleSidebarColorChange = (color) => {
-    setSelectedColor(color);
+    dispatch({ type: 'SET_SIDEBAR_COLOR', payload: { sidebarColor: color } })
     window.localStorage.setItem('sidebarColor', color)
     setShowSidebarOptions(false);
   };
 
   const handleMainColorChange = (color) => {
-    setMainThemeColor(color);
+    dispatch({ type: 'SET_MAIN_COLOR', payload: { mainColor: color } })
     window.localStorage.setItem('mainTheme', color === '#f4f4f4' ? 'light' : 'dark')
     setShowMainThemeOptions(false);
   };
 
   return (
-    <div className='sidebar' style={{ backgroundColor: `${selectedColor}` }}>
+    <div className='sidebar' style={{ backgroundColor: `${sideBarThemeColor}` }}>
       <div className='sidebar-content'>
         <div className="user">
           <Avatar src={user.photoURL} />
@@ -75,7 +68,7 @@ export default function Sidebar() {
           <div style={{ display: 'flex' }}>
             <div className='color-picker'
               style={{
-                backgroundColor: selectedColor,
+                backgroundColor: sideBarThemeColor,
               }}
               onClick={() => {
                 setShowMainThemeOptions(false)
@@ -102,7 +95,7 @@ export default function Sidebar() {
                   key={index}
                   style={{
                     backgroundColor: color,
-                    border: selectedColor === color ? '2px solid #000000' : 'none',
+                    border: sideBarThemeColor === color ? '2px solid #000000' : 'none',
                   }}
                   onClick={() => handleSidebarColorChange(color)}
                 ></button>
@@ -119,7 +112,7 @@ export default function Sidebar() {
                   key={index}
                   style={{
                     backgroundColor: color,
-                    border: selectedColor === color ? '2px solid #000000' : 'none',
+                    border: mainThemeColor === color ? '2px solid #000000' : 'none',
                   }}
                   onClick={() => handleMainColorChange(color)}
                 ></button>
