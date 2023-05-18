@@ -19,7 +19,7 @@ export default function Sidebar() {
   const [showSidebarOptions, setShowSidebarOptions] = useState(false); // State to toggle options visibility
 
   // color picker - dashboard
-  const [mainThemeColor, setMainThemeColor] = useState(!mainTheme ? 'light' : 'dark');
+  const [mainThemeColor, setMainThemeColor] = useState(!mainTheme || mainTheme !== 'dark' ? '#fff' : '#1b1b1b');
   const [showMainThemeOptions, setShowMainThemeOptions] = useState(false);
 
   const sidebarColorOptions = [
@@ -29,15 +29,21 @@ export default function Sidebar() {
     '#8d69f1', // Purple
   ];
 
-  // const mainThemeOptions = {
-  //   light: '#fff',
-  //   dark: '#000'
-  // }
+  const mainThemeOptions = [
+    '#fff',  // Light
+    '#1b1b1b'  // Dark
+  ]
 
-  const handleColorChange = (color) => {
+  const handleSidebarColorChange = (color) => {
     setSelectedColor(color);
     window.localStorage.setItem('sidebarColor', color)
     setShowSidebarOptions(false);
+  };
+
+  const handleMainColorChange = (color) => {
+    setMainThemeColor(color);
+    window.localStorage.setItem('mainTheme', color)
+    setShowMainThemeOptions(false);
   };
 
   return (
@@ -79,7 +85,10 @@ export default function Sidebar() {
                 marginLeft: 'auto',
                 marginRight: 'auto'
               }}
-              onClick={() => setShowSidebarOptions(!showSidebarOptions)}
+              onClick={() => {
+                setShowMainThemeOptions(false)
+                setShowSidebarOptions(!showSidebarOptions)
+              }}
             ></div>
             {/* Color Picker - Dashboard */}
             <div
@@ -87,14 +96,17 @@ export default function Sidebar() {
                 width: '40px',
                 height: '40px',
                 borderRadius: '50%',
-                backgroundColor: selectedColor,
+                backgroundColor: mainThemeColor,
                 border: '2px solid #444',
                 cursor: 'pointer',
                 marginTop: '20px',
                 marginLeft: 'auto',
                 marginRight: 'auto'
               }}
-              onClick={() => setShowSidebarOptions(!showSidebarOptions)}
+              onClick={() => {
+                setShowSidebarOptions(false)
+                setShowMainThemeOptions(!showMainThemeOptions)
+              }}
             ></div>
           </div>
           {/* Color Options - Sidebar */}
@@ -112,16 +124,16 @@ export default function Sidebar() {
                     border: selectedColor === color ? '2px solid #000000' : 'none',
                     cursor: 'pointer',
                   }}
-                  onClick={() => handleColorChange(color)}
+                  onClick={() => handleSidebarColorChange(color)}
                 ></button>
               ))}
             </div>
           )}
 
           {/* Color Options - Dashboard */}
-          {showSidebarOptions && (
+          {showMainThemeOptions && (
             <div style={{ marginTop: '10px' }}>
-              {sidebarColorOptions.map((color, index) => (
+              {mainThemeOptions.map((color, index) => (
                 <button
                   key={index}
                   style={{
@@ -133,7 +145,7 @@ export default function Sidebar() {
                     border: selectedColor === color ? '2px solid #000000' : 'none',
                     cursor: 'pointer',
                   }}
-                  onClick={() => handleColorChange(color)}
+                  onClick={() => handleMainColorChange(color)}
                 ></button>
               ))}
             </div>
