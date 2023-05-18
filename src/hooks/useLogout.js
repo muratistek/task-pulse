@@ -9,6 +9,8 @@ export const useLogout = () => {
   const { dispatch, user } = useAuthContext()
 
   const logout = async () => {
+    window.localStorage.removeItem('sidebarColor')
+    window.localStorage.removeItem('mainTheme')
     setError(null)
     setIsPending(true)
 

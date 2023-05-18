@@ -49,13 +49,13 @@ export default function Sidebar() {
         <nav className="links">
           <ul>
             <li>
-              <NavLink exact to="/">
+              <NavLink className={mainThemeColor === '#1b1b1b' ? 'dark' : ''} exact to="/">
                 <img src={DashboardIcon} alt="dashboard icon" />
                 <span>Dashboard</span>
               </NavLink>
             </li>
             <li>
-              <NavLink to="/create">
+              <NavLink className={mainThemeColor === '#1b1b1b' ? 'dark' : ''} to="/create">
                 <img src={AddIcon} alt="add project icon" />
                 <span>New Project</span>
               </NavLink>

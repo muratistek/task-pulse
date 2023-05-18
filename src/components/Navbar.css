@@ -21,11 +21,19 @@
   margin-right: auto;
 }
 
+.container.dark .navbar .logo {
+  color: #eee;
+}
+
 .navbar .logo img {
   margin-right: 10px;
   filter: invert(25%);
   width: 36px;
   margin-top: 0px;
+}
+
+.container.dark .navbar .logo img {
+  filter: invert(100%);
 }
 
 .navbar a {

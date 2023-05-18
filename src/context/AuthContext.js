@@ -8,7 +8,7 @@ export const authReducer = (state, action) => {
     case 'LOGIN':
       return { ...state, user: action.payload }
     case 'LOGOUT':
-      return { ...state, user: null }
+      return { ...state, user: null, sideBarThemeColor: "#8d69f1", mainThemeColor: "#f4f4f4" }
     case 'AUTH_IS_READY':
       return { ...state, user: action.payload, authIsReady: true }
     case 'SET_SIDEBAR_COLOR':
@@ -30,6 +30,7 @@ export const AuthContextProvider = ({ children }) => {
     sideBarThemeColor: !sidebarColor ? '#8d69f1' : sidebarColor,
     mainThemeColor: !mainTheme || mainTheme !== 'dark' ? '#f4f4f4' : '#1b1b1b'
   })
+
 
   useEffect(() => {
     const unsub = projectAuth.onAuthStateChanged(user => {

@@ -8,6 +8,9 @@
   --primary-dark: #7f57ef;
   --highlight-color: #d13267;
   --bg-color: #f4f4f4;
+  --bg-color-dark: #1b1b1b;
+  --bg-secondary: #fff;
+  --bg-secondary-dark: #353535;
 }
 
 /* base styles */
@@ -16,6 +19,10 @@ body {
   margin: 0;
   font-size: 1.1em;
   background: var(--bg-color);
+}
+
+.container.dark {
+  background: var(--bg-color-dark);
 }
 
 ul,
@@ -40,6 +47,10 @@ ul {
   display: inline-block;
 }
 
+.container.dark .page-title {
+  color: #fff;
+}
+
 .btn {
   border-radius: 4px;
   background: #fff;
@@ -49,6 +60,91 @@ ul {
   cursor: pointer;
   font-size: 1em;
 }
+
+.container.green .btn {
+  color: #3AEF55;
+  border: 1px solid #3AEF55;
+}
+
+.container.pink .btn {
+  color: #f1348d;
+  border: 1px solid #f1348d;
+}
+
+.container.orange .btn {
+  color: #f18d03;
+  border: 1px solid #f18d03;
+}
+
+.container.dark .btn {
+  background: #8d69f1;
+  color: #fff;
+  border: 1px solid #8d69f1;
+}
+
+.container.dark.green .btn {
+  background: #3AEF55 !important;
+  color: #fff;
+  border: 1px solid #3AEF55 !important;
+}
+
+.container.dark.pink .btn {
+  background: #f1348d !important;
+  color: #fff;
+  border: 1px solid #f1348d !important;
+}
+
+.container.dark.orange .btn {
+  background: #f18d03 !important;
+  color: #fff;
+  border: 1px solid #f18d03 !important;
+}
+
+.btn:hover {
+  color: #fff;
+  background-color: var(--primary-color);
+}
+
+.container.green .btn:hover {
+  color: #fff;
+  background-color: #3AEF55;
+}
+
+.container.pink .btn:hover {
+  color: #fff;
+  background-color: #f1348d;
+}
+
+.container.orange .btn:hover {
+  color: #fff;
+  background-color: #f18d03;
+}
+
+.container.dark .btn:hover {
+  color: #ddd;
+  background-color: #7f57ef;
+  border: 1px solid #7f57ef;
+}
+
+.container.dark.green .btn:hover {
+  color: #fff;
+  background-color: #2ebf44 !important;
+  border: 1px solid #2ebf44 !important;
+}
+
+.container.dark.pink .btn:hover {
+  color: #ddd;
+  background-color: #c02970 !important;
+  border: 1px solid #c02970 !important;
+}
+
+.container.dark.orange .btn:hover {
+  color: #ddd;
+  background-color: #c07002 !important;
+  border: 1px solid #c07002 !important;
+}
+
+
 
 .btn-solid {
   border-radius: 4px;
@@ -70,10 +166,6 @@ ul {
   justify-content: space-between;
 }
 
-.btn:hover {
-  color: #fff;
-  background-color: var(--primary-color);
-}
 
 /* forms */
 label {

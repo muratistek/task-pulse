@@ -15,14 +15,21 @@ import Sidebar from './components/Sidebar';
 import OnlineUsers from './components/OnlineUsers';
 
 function App() {
-  const { user, authIsReady } = useAuthContext()
+  const { user, authIsReady, mainThemeColor, sideBarThemeColor } = useAuthContext()
+
+  let sidebarColorClass;
+
+  if (sideBarThemeColor === "#3AEF55") sidebarColorClass = "green"
+  else if (sideBarThemeColor === "#f1348d") sidebarColorClass = "pink"
+  else if (sideBarThemeColor === "#f18d03") sidebarColorClass = "orange"
+  else sidebarColorClass = ""
 
   return (
     <div className="App">
       {authIsReady && (
         <BrowserRouter>
           {user && <Sidebar />}
-          <div className="container">
+          <div className={`container ${mainThemeColor === '#1b1b1b' ? 'dark' : ''} ${sidebarColorClass}`}>
             <Navbar />
             <Switch>
               <Route exact path='/'>

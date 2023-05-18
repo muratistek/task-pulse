@@ -44,14 +44,29 @@
   filter: invert(100%);
 }
 
+.sidebar .dark .links img {
+  margin-right: 10px;
+  filter: invert(40%);
+}
+
 .sidebar .links a.active {
   color: #555;
   background: var(--bg-color);
   border-radius: 20px 0 0 20px;
 }
 
+.sidebar .links a.dark.active {
+  color: #eee;
+  background: var(--bg-color-dark);
+  border-radius: 20px 0 0 20px;
+}
+
 .sidebar .links .active img {
   filter: invert(40%);
+}
+
+.sidebar .links .dark.active img {
+  filter: invert(100%);
 }
 
 .customize-theme {

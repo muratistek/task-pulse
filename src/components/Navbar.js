@@ -8,7 +8,9 @@ import Pulse from '../assets/taskPulse.svg'
 
 export default function Navbar() {
   const { logout, isPending } = useLogout()
-  const { user } = useAuthContext()
+  const { user, } = useAuthContext()
+
+
 
   return (
     <div className='navbar'>
@@ -28,8 +30,8 @@ export default function Navbar() {
 
         {user && (
           <li>
-            {!isPending && <button onClick={logout} className='btn'>Logout</button>}
-            {isPending && <button className='btn' disabled>Logging Out...</button>}
+            {!isPending && <button onClick={logout} className={`btn`}>Logout</button>}
+            {isPending && <button className={`btn`} disabled>Logging Out...</button>}
           </li>
         )}
       </ul>
