@@ -19,7 +19,7 @@ export default function Sidebar() {
   const [showSidebarOptions, setShowSidebarOptions] = useState(false); // State to toggle options visibility
 
   // color picker - dashboard
-  const [mainThemeColor, setMainThemeColor] = useState(!mainTheme || mainTheme !== 'dark' ? '#fff' : '#1b1b1b');
+  const [mainThemeColor, setMainThemeColor] = useState(!mainTheme || mainTheme !== 'dark' ? '#f4f4f4' : '#1b1b1b');
   const [showMainThemeOptions, setShowMainThemeOptions] = useState(false);
 
   const sidebarColorOptions = [
@@ -30,7 +30,7 @@ export default function Sidebar() {
   ];
 
   const mainThemeOptions = [
-    '#fff',  // Light
+    '#f4f4f4',  // Light
     '#1b1b1b'  // Dark
   ]
 
@@ -42,7 +42,7 @@ export default function Sidebar() {
 
   const handleMainColorChange = (color) => {
     setMainThemeColor(color);
-    window.localStorage.setItem('mainTheme', color)
+    window.localStorage.setItem('mainTheme', color === '#f4f4f4' ? 'light' : 'dark')
     setShowMainThemeOptions(false);
   };
 
@@ -73,17 +73,9 @@ export default function Sidebar() {
           <p>Customize Theme</p>
           {/* Color Picker - Sidebar */}
           <div style={{ display: 'flex' }}>
-            <div
+            <div className='color-picker'
               style={{
-                width: '40px',
-                height: '40px',
-                borderRadius: '50%',
                 backgroundColor: selectedColor,
-                border: '2px solid #444',
-                cursor: 'pointer',
-                marginTop: '20px',
-                marginLeft: 'auto',
-                marginRight: 'auto'
               }}
               onClick={() => {
                 setShowMainThemeOptions(false)
@@ -91,17 +83,9 @@ export default function Sidebar() {
               }}
             ></div>
             {/* Color Picker - Dashboard */}
-            <div
+            <div className='color-picker'
               style={{
-                width: '40px',
-                height: '40px',
-                borderRadius: '50%',
                 backgroundColor: mainThemeColor,
-                border: '2px solid #444',
-                cursor: 'pointer',
-                marginTop: '20px',
-                marginLeft: 'auto',
-                marginRight: 'auto'
               }}
               onClick={() => {
                 setShowSidebarOptions(false)
@@ -114,15 +98,11 @@ export default function Sidebar() {
             <div style={{ marginTop: '10px' }}>
               {sidebarColorOptions.map((color, index) => (
                 <button
+                  className='color-options'
                   key={index}
                   style={{
-                    width: '40px',
-                    height: '40px',
-                    borderRadius: '50%',
                     backgroundColor: color,
-                    margin: '5px',
                     border: selectedColor === color ? '2px solid #000000' : 'none',
-                    cursor: 'pointer',
                   }}
                   onClick={() => handleSidebarColorChange(color)}
                 ></button>
@@ -135,15 +115,11 @@ export default function Sidebar() {
             <div style={{ marginTop: '10px' }}>
               {mainThemeOptions.map((color, index) => (
                 <button
+                  className='color-options'
                   key={index}
                   style={{
-                    width: '40px',
-                    height: '40px',
-                    borderRadius: '50%',
                     backgroundColor: color,
-                    margin: '5px',
                     border: selectedColor === color ? '2px solid #000000' : 'none',
-                    cursor: 'pointer',
                   }}
                   onClick={() => handleMainColorChange(color)}
                 ></button>
